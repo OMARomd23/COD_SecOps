@@ -52,13 +52,16 @@ if (!new URLSearchParams(location.search).has('render')) {
     gate.querySelector('b').textContent = '▶  PLAY';
     renderFrame(offset);
     gate.addEventListener('click', () => play(offset >= DURATION ? 0 : offset));
-    window.addEventListener('keydown', e => {
+    // Embedded in a larger page, shortcuts only apply while the stage has focus.
+    const keyTarget = window.FILM_EMBED ? document.getElementById('stage') : window;
+    keyTarget.addEventListener('keydown', e => {
       if (e.code === 'Space') { e.preventDefault(); playing ? pause() : play(now() >= DURATION ? 0 : now()); }
       if (e.key === 'r') play(0);
-      if (e.key === 'f') document.documentElement.requestFullscreen?.();
+      if (e.key === 'f') (window.FILM_EMBED ? document.getElementById('stage') : document.documentElement).requestFullscreen?.();
       if (e.key === 'ArrowRight') { const t = Math.min(DURATION, now() + 1); playing ? play(t) : (offset = t, renderFrame(t)); }
       if (e.key === 'ArrowLeft') { const t = Math.max(0, now() - 1); playing ? play(t) : (offset = t, renderFrame(t)); }
     });
+    Object.assign(window.FILM, { play, pause, isPlaying: () => playing });
     (function loop() {
       const t = now();
       if (playing) {
