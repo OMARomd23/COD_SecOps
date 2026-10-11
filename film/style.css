@@ -1,0 +1,131 @@
+/* ============ CALL OF DUTY: SEC OPS — styles ============ */
+:root{
+  --bg:#05060a; --ink:#e8f6ff; --mono:'JBMono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#000;overflow:hidden;height:100%}
+body{display:grid;place-items:center}
+
+#stage{
+  position:relative; width:1920px; height:1080px; background:#000;
+  overflow:hidden; cursor:pointer; color:var(--ink);
+  font-family:var(--mono); user-select:none;
+  transform-origin:center center;
+}
+#bg,#fx,#dom{position:absolute;inset:0;width:1920px;height:1080px}
+#fx{mix-blend-mode:normal;pointer-events:none}
+#dom{pointer-events:none}
+
+/* ---------- HUD frame ---------- */
+.hud{position:absolute;inset:0;--ac:#39ff8b}
+.hud-corner{position:absolute;width:52px;height:52px;border:3px solid var(--ac);opacity:.85}
+.hud-corner.tl{top:34px;left:34px;border-right:0;border-bottom:0}
+.hud-corner.tr{top:34px;right:34px;border-left:0;border-bottom:0}
+.hud-corner.bl{bottom:34px;left:34px;border-right:0;border-top:0}
+.hud-corner.br{bottom:34px;right:34px;border-left:0;border-top:0}
+.hud-top,.hud-bot{position:absolute;left:52px;right:52px;display:flex;
+  justify-content:space-between;align-items:center;font-size:19px;letter-spacing:3px;
+  color:var(--ac);text-transform:uppercase}
+.hud-top{top:44px}.hud-bot{bottom:46px;color:rgba(255,255,255,.55);font-size:16px}
+.hud-label{font-weight:800;letter-spacing:5px}
+.rec{color:#ff3b3b;animation:blink 1s steps(1) infinite}
+.hud-num{opacity:.8}
+@keyframes blink{50%{opacity:.25}}
+
+/* ---------- cold open ---------- */
+.cold{position:absolute;left:90px;top:46%;transform:translateY(-50%);
+  font-size:30px;line-height:1.9;letter-spacing:1px;color:#8affc0;
+  text-shadow:0 0 14px rgba(57,255,139,.45)}
+.cold .warn{color:#ffcf3b}.cold .bad{color:#ff4d4d;font-weight:800}
+.cur{animation:blink .8s steps(1) infinite}
+.classified{position:absolute;left:50%;top:50%;font-family:'BlackOps';
+  font-size:150px;color:#ff2b2b;letter-spacing:6px;white-space:nowrap;
+  border:9px solid #ff2b2b;padding:6px 40px;border-radius:8px;
+  text-shadow:0 0 30px rgba(255,20,20,.6);box-shadow:0 0 50px rgba(255,20,20,.35) inset,0 0 40px rgba(255,20,20,.3)}
+.alarmbar{position:absolute;left:0;right:0;bottom:120px;display:flex;justify-content:center;gap:70px;
+  font-family:'BlackOps';font-size:34px;color:#ff3b3b;letter-spacing:6px;text-shadow:0 0 18px rgba(255,20,20,.7)}
+
+/* ---------- character card ---------- */
+.card{position:absolute;left:118px;top:140px;width:1684px;height:800px;--ac:#39ff8b;--ac2:#000}
+.accentbar{position:absolute;left:0;top:34px;width:24px;height:720px;
+  display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.1)}
+.accentbar .stripe{flex:1;filter:saturate(1.2)}
+.native{position:absolute;left:66px;top:-14px;font-size:126px;line-height:.9;color:var(--ac);
+  text-shadow:0 0 34px color-mix(in srgb,var(--ac) 55%,transparent);white-space:nowrap;opacity:.95;
+  max-width:1150px;overflow:hidden}
+.info{position:absolute;left:70px;top:230px;width:1070px}
+.role{font-family:'BlackOps';font-size:38px;letter-spacing:12px;color:#fff}
+.role span{display:inline-block}
+.name{font-family:'Anton';font-size:94px;line-height:.96;letter-spacing:1px;color:#fff;
+  text-shadow:0 6px 0 rgba(0,0,0,.6);margin-top:8px;white-space:nowrap}
+.sub{font-size:25px;letter-spacing:4px;color:var(--ac);margin-top:16px;text-transform:uppercase}
+.tag{font-family:'SpecialElite';font-size:29px;color:rgba(255,255,255,.72);margin-top:24px;max-width:1000px}
+.stats{position:absolute;left:70px;top:588px;width:640px;display:flex;flex-direction:column;gap:15px}
+.stat{display:grid;grid-template-columns:210px 1fr 56px;align-items:center;gap:18px;
+  font-size:20px;letter-spacing:3px;color:rgba(255,255,255,.8)}
+.stat .track{height:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);position:relative;overflow:hidden}
+.stat .fill{position:absolute;inset:0 auto 0 0;background:var(--ac);
+  box-shadow:0 0 16px var(--ac);transition:none}
+.stat .sv{font-family:'Anton';font-size:30px;color:var(--ac);text-align:right}
+.port{position:absolute;right:40px;top:70px;width:470px;height:700px;display:grid;place-items:center}
+.port svg{width:100%;height:100%;filter:drop-shadow(0 0 40px color-mix(in srgb,var(--ac) 40%,transparent))}
+.cardstamp{position:absolute;right:150px;top:30px;font-family:'BlackOps';font-size:52px;
+  color:#ff2f2f;border:6px solid #ff2f2f;padding:4px 24px;transform:rotate(9deg);
+  text-shadow:0 0 16px rgba(255,20,20,.6);letter-spacing:4px;border-radius:6px}
+.pips{position:absolute;left:0;right:0;bottom:92px;display:flex;justify-content:center;gap:20px;--ac:#39ff8b}
+.pips span{width:70px;height:6px;background:rgba(255,255,255,.18)}
+.pips span.on{background:var(--ac);box-shadow:0 0 16px var(--ac)}
+
+/* ---------- hack scene ---------- */
+.terminal{position:absolute;left:70px;top:150px;width:620px;height:760px;
+  background:rgba(2,22,12,.55);border:1px solid rgba(57,255,139,.35);
+  box-shadow:0 0 50px rgba(57,255,139,.12) inset;padding:30px 28px;
+  font-size:23px;line-height:1.62;color:#9effc4;text-shadow:0 0 10px rgba(57,255,139,.4);
+  overflow:hidden}
+.terminal .ok{color:#4affa0}.terminal .warn{color:#ffd23b}.terminal .root{color:#fff;font-weight:800}
+.cvestack{position:absolute;right:66px;top:132px;width:560px;display:flex;flex-direction:column;gap:11px}
+.cve{background:rgba(5,20,12,.7);border:1px solid rgba(57,255,139,.4);padding:11px 18px;
+  font-size:17px;color:#bfffd8}
+.cve.owned{border-color:#ff3b3b;background:rgba(30,4,4,.72);color:#ffb3b3;
+  box-shadow:0 0 26px rgba(255,40,40,.25)}
+.cve-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.sev{font-family:'BlackOps';font-size:15px;letter-spacing:2px;padding:1px 9px;border-radius:3px}
+.sev.critical{background:#ff2b2b;color:#fff}.sev.high{background:#ff8c1a;color:#120}.sev.medium{background:#ffd23b;color:#120}
+.cid{opacity:.7;font-size:15px}
+.cve-name{font-family:'Anton';font-size:27px;letter-spacing:1px;color:#fff;line-height:1}
+.cve-id{font-size:15px;opacity:.8;margin:3px 0 7px}
+.cve .st{font-weight:800}
+.cve.owned .st{color:#ff5555}
+.cve-bar{height:8px;background:rgba(255,255,255,.1);position:relative;overflow:hidden}
+.cve-bar span{position:absolute;inset:0 auto 0 0;background:#39ff8b;box-shadow:0 0 12px #39ff8b}
+.cve.owned .cve-bar span{background:#ff3b3b;box-shadow:0 0 12px #ff3b3b}
+.vulnbanner{position:absolute;left:50%;top:50%;font-family:'BlackOps';font-size:98px;
+  color:#fff;background:#ff1f1f;padding:14px 60px;letter-spacing:8px;white-space:nowrap;
+  box-shadow:0 0 70px rgba(255,20,20,.7);text-shadow:0 0 18px rgba(0,0,0,.4)}
+
+/* ---------- chaos ---------- */
+.chaosL,.chaosR{position:absolute;top:120px;display:flex;flex-direction:column;gap:6px}
+.chaosL{left:90px;color:#ff6a4d}.chaosR{right:90px;text-align:right;color:#39ff8b}
+.chaosL span,.chaosR span{font-family:'BlackOps';font-size:76px;letter-spacing:6px;
+  text-shadow:0 0 24px currentColor}
+.chaosL small,.chaosR small{font-size:22px;letter-spacing:4px;color:rgba(255,255,255,.6);text-transform:uppercase}
+.granted{position:absolute;left:50%;top:50%;font-family:'BlackOps';font-size:120px;color:#39ff8b;
+  letter-spacing:10px;white-space:nowrap;text-shadow:0 0 50px rgba(57,255,139,.8);
+  border:8px solid #39ff8b;padding:10px 50px;box-shadow:0 0 70px rgba(57,255,139,.4)}
+
+/* ---------- title ---------- */
+.titlewrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.t-cod{font-family:'BlackOps';font-size:150px;letter-spacing:12px;color:#fff;
+  text-shadow:0 0 40px rgba(255,255,255,.25),0 8px 0 rgba(0,0,0,.6);transform-origin:center}
+.t-cod .ampx{color:#ff2b2b}
+.t-rule{width:860px;height:5px;background:linear-gradient(90deg,transparent,#39ff8b,transparent);
+  transform-origin:center;margin:8px 0}
+.t-sec{font-family:'BlackOps';font-size:208px;line-height:.9;letter-spacing:22px;
+  color:#39ff8b;text-shadow:0 0 60px rgba(57,255,139,.7),0 0 10px rgba(57,255,139,.9)}
+.t-sub{font-size:26px;letter-spacing:7px;color:rgba(255,255,255,.65);margin-top:26px;text-transform:uppercase}
+.t-press{margin-top:40px;font-size:24px;letter-spacing:6px;color:#ffd23b}
+.studio{position:absolute;bottom:60px;left:0;right:0;text-align:center;
+  font-size:19px;letter-spacing:5px;color:rgba(255,255,255,.4);text-transform:uppercase}
+.studio b{color:#39ff8b}
+
+/* fit-to-viewport handled by JS scale on #stage */

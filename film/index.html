@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CALL OF DUTY: SEC OPS</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="bg"></canvas>
+  <canvas id="fx"></canvas>
+  <div id="dom"></div>
+</div>
+<script>
+// fit the fixed 1920x1080 stage into the viewport
+function fit(){ const s=document.getElementById('stage');
+  const k=Math.min(innerWidth/1920, innerHeight/1080);
+  s.style.transform=`scale(${k})`; }
+addEventListener('resize',fit); fit();
+</script>
+<script src="film.js"></script>
+</body>
+</html>
