@@ -10,8 +10,9 @@ no audio samples: the busts are vector silhouettes shaded with halftone and rim
 light, and the score is synthesized from oscillators and noise. The visuals and
 the score share one cue sheet at 120 BPM, so every cut lands on the beat.
 
-**Watch:** `out/COD_SecOps.mp4`, or open `film/index.html` through any static
-server (`npx serve film`) for the live, real-time version.
+**Watch:** `out/COD_SecOps.mp4`, the showcase site on GitHub Pages (see below),
+or open `film/index.html` through any static server (`npx serve film`) for the
+live, real-time version.
 
 ## The film
 
@@ -44,7 +45,9 @@ film/            the film (plain HTML + canvas, no build step)
   fonts/         OFL / Apache fonts from Google Fonts (see below)
   audio/score.mp3
 audio/score.py   the score: numpy synthesis → audio/score.wav + film/audio/score.mp3
+site/            the showcase page (index.html, web-sized film.mp4, stills, og.jpg)
 tools/render.mjs Playwright frame renderer (stills or full video)
+tools/build-site.sh  assembles site/ + the live engine from film/ into _site/
 tools/sheet.py   contact sheets for reviewing stills
 ```
 
@@ -61,6 +64,26 @@ node tools/render.mjs stills 4.8 13.2 27    # single frames for review
 
 Every frame is a pure function of time, so the offline render is frame-exact
 whatever the machine speed.
+
+## Showcase site (GitHub Pages)
+
+`.github/workflows/pages.yml` builds and deploys the showcase on every push to
+`main` that touches the site or the engine. One-time setup in the repository:
+
+1. **Settings → Pages → Build and deployment → Source:** choose **GitHub Actions**.
+2. **Settings → General → Default branch:** set it to `main`. The `github-pages`
+   environment only accepts deployments from the default branch unless you add
+   `main` under **Settings → Environments → github-pages**.
+3. Run the workflow once from the **Actions** tab (or push to `main`).
+
+The page then lives at `https://<user>.github.io/<repo>/`. The build fills in
+absolute link-preview URLs from that address automatically.
+
+Preview locally:
+
+```sh
+tools/build-site.sh && npx serve _site
+```
 
 ## Fonts
 
