@@ -1,0 +1,8 @@
+out/stills/
+out/*.jpg
+out/*.png
+out/*.log
+out/frames.mkv
+audio/score.wav
+node_modules/
+__pycache__/
