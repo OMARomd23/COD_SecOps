@@ -6,3 +6,4 @@ out/frames.mkv
 audio/score.wav
 node_modules/
 __pycache__/
+out/*_preview.mp4
